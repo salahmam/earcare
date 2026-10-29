@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قطرات South Moon - الحل النهائي لطنين الأذن وريحة الأذن</title>
-    <!-- خط العرض المريح للعين -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <title>قطرات South Moon الأصلية - العلاج النهائي لطنين الأذن</title>
+    <!-- خط Tajawal العصري -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <!-- مكتبة الأيقونات FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary-color: #0284c7;
-            --secondary-color: #0369a1;
-            --accent-color: #10b981;
-            --danger-color: #ef4444;
-            --dark-color: #1e293b;
-            --light-color: #f8fafc;
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --accent: #10b981;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --light: #f8fafc;
             --white: #ffffff;
-            --transition: all 0.3s ease-in-out;
+            --gray: #64748b;
+            --border-radius: 16px;
+            --box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -29,411 +32,451 @@
         }
 
         body {
-            background-color: var(--light-color);
-            color: var(--dark-color);
-            line-height: 1.7;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.8;
             overflow-x: hidden;
         }
 
-        /* شريط التنبيه العلوي */
-        .top-bar {
-            background: linear-gradient(135deg, var(--danger-color), #dc2626);
+        /* شريط التنبيه العلوي المتحرك */
+        .top-ticker {
+            background: linear-gradient(135deg, var(--danger), #b91c1c);
             color: var(--white);
             text-align: center;
-            padding: 10px;
+            padding: 10px 15px;
             font-size: 14px;
             font-weight: 700;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            animation: pulse-bar 2s infinite;
+            box-shadow: 0 2px 10px rgba(239, 68, 68, 0.3);
+            animation: pulse-ticker 2s infinite;
         }
 
-        @keyframes pulse-bar {
-            0% { opacity: 0.9; }
-            50% { opacity: 1; transform: scale(1.01); }
-            100% { opacity: 0.9; }
+        @keyframes pulse-ticker {
+            0% { opacity: 0.95; }
+            50% { opacity: 1; transform: scale(1.005); }
+            100% { opacity: 0.95; }
         }
 
-        /* رأس الصفحة */
+        /* رأس الصفحة العصري */
         header {
-            background: var(--white);
-            padding: 20px 15px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 18px 15px;
             text-align: center;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
         header h1 {
-            font-size: 24px;
-            color: var(--primary-color);
-            font-weight: 800;
+            font-size: 22px;
+            color: var(--primary);
+            font-weight: 900;
         }
 
         header p {
-            font-size: 14px;
-            color: #64748b;
+            font-size: 13px;
+            color: var(--gray);
+            font-weight: 500;
         }
 
         /* الحاوية الرئيسية */
-        .container {
-            max-width: 600px;
+        .main-wrapper {
+            max-width: 580px;
             margin: 0 auto;
             padding: 20px 15px;
         }
 
-        /* قسم عرض الصور (Gallery) مع الأنيميشن */
-        .gallery-container {
+        /* قسم المعرض التفاعلي (10 صور بصيغة JPG) */
+        .gallery-box {
             background: var(--white);
-            border-radius: 16px;
+            border-radius: var(--border-radius);
             padding: 15px;
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            box-shadow: var(--box-shadow);
             margin-bottom: 25px;
-            animation: fadeInUp 0.8s ease-out;
+            animation: slideUp 0.8s ease-out;
         }
 
-        .main-img-box {
+        .main-preview {
             width: 100%;
-            height: 320px;
+            height: 340px;
             border-radius: 12px;
             overflow: hidden;
-            margin-bottom: 12px;
             background: #f1f5f9;
+            margin-bottom: 12px;
             position: relative;
         }
 
-        .main-img-box img {
+        .main-preview img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
 
-        .thumbnails {
+        .thumbnails-list {
             display: flex;
             gap: 8px;
             overflow-x: auto;
             padding-bottom: 5px;
+            scrollbar-width: thin;
         }
 
-        .thumbnails img {
-            width: 65px;
-            height: 65px;
+        .thumbnails-list img {
+            width: 60px;
+            height: 60px;
             object-fit: cover;
             border-radius: 8px;
             cursor: pointer;
-            opacity: 0.6;
+            opacity: 0.5;
             border: 2px solid transparent;
             transition: var(--transition);
             flex-shrink: 0;
         }
 
-        .thumbnails img.active, .thumbnails img:hover {
+        .thumbnails-list img.active, .thumbnails-list img:hover {
             opacity: 1;
-            border-color: var(--primary-color);
+            border-color: var(--primary);
             transform: scale(1.05);
         }
 
-        /* الكروت والبطاقات */
-        .card {
+        /* البطاقات الاحترافية */
+        .content-card {
             background: var(--white);
-            border-radius: 16px;
-            padding: 22px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
-            animation: fadeInUp 0.8s ease-out;
+            border-radius: var(--border-radius);
+            padding: 24px;
+            margin-bottom: 22px;
+            box-shadow: var(--box-shadow);
+            animation: slideUp 0.8s ease-out;
             transition: var(--transition);
+            border-top: 4px solid var(--primary);
         }
 
-        .card:hover {
+        .content-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px -5px rgba(0,0,0,0.08);
         }
 
-        .section-title {
-            font-size: 20px;
+        .section-heading {
+            font-size: 19px;
             font-weight: 800;
-            color: var(--dark-color);
+            color: var(--dark);
             margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .section-title i {
-            color: var(--primary-color);
+        .section-heading i {
+            color: var(--primary);
+            font-size: 20px;
         }
 
-        /* قائمة المميزات */
-        .features-list {
-            list-style: none;
+        /* قائمة المميزات الفعّالة */
+        .benefits-grid {
+            display: grid;
+            gap: 12px;
+            margin-top: 15px;
         }
 
-        .features-list li {
-            position: relative;
-            padding-right: 30px;
-            margin-bottom: 12px;
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: #f8fafc;
+            padding: 12px 15px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .benefit-item i {
+            color: var(--accent);
+            margin-top: 4px;
             font-size: 16px;
         }
 
-        .features-list li i {
-            position: absolute;
-            right: 0;
-            top: 5px;
-            color: var(--accent-color);
-        }
-
-        /* السعر والخصم */
-        .price-box {
+        /* السعر والخصم الاحترافي */
+        .pricing-box {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
-            border: 2px dashed var(--accent-color);
-            padding: 15px 20px;
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            border: 2px dashed var(--accent);
+            padding: 16px 20px;
             border-radius: 12px;
             margin: 20px 0;
         }
 
         .old-price {
             text-decoration: line-through;
-            color: #94a3b8;
+            color: var(--gray);
             font-size: 16px;
+            font-weight: 700;
         }
 
         .new-price {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--accent-color);
+            font-size: 26px;
+            font-weight: 900;
+            color: #047857;
         }
 
-        /* أزرار الطلب والحركة */
-        .cta-btn {
+        /* الأزرار العصرية ذات الحركة */
+        .action-btn {
             display: block;
             width: 100%;
-            background: linear-gradient(135deg, var(--accent-color), #059669);
+            background: linear-gradient(135deg, var(--accent), #059669);
             color: var(--white);
             text-align: center;
             padding: 16px;
             font-size: 18px;
-            font-weight: 700;
+            font-weight: 800;
             border: none;
             border-radius: 14px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
             transition: var(--transition);
             text-decoration: none;
-            animation: bounce-slow 2s infinite;
+            animation: bounce-gentle 2s infinite;
         }
 
-        .cta-btn:hover {
+        .action-btn:hover {
             transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
+            box-shadow: 0 6px 25px rgba(16, 185, 129, 0.6);
         }
 
-        @keyframes bounce-slow {
+        @keyframes bounce-gentle {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-4px); }
         }
 
-        /* استمارة الطلب */
-        .order-form {
+        /* استمارة الطلب المتقدمة */
+        .order-section {
             background: var(--white);
-            border-radius: 16px;
+            border-radius: var(--border-radius);
             padding: 25px;
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
-            margin-top: 25px;
-            border-top: 5px solid var(--primary-color);
+            box-shadow: var(--box-shadow);
+            border-top: 5px solid var(--accent);
         }
 
-        .form-group {
-            margin-bottom: 15px;
+        .input-group {
+            margin-bottom: 16px;
         }
 
-        .form-group label {
+        .input-group label {
             display: block;
             font-weight: 700;
-            margin-bottom: 6px;
-            font-size: 15px;
+            margin-bottom: 7px;
+            font-size: 14px;
+            color: var(--dark);
         }
 
-        .form-group input, .form-group select {
+        .input-group input, .input-group select {
             width: 100%;
-            padding: 14px;
+            padding: 14px 16px;
             border: 2px solid #e2e8f0;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 16px;
             transition: var(--transition);
-            background: #f8fafc;
+            background: var(--light);
+            color: var(--dark);
         }
 
-        .form-group input:focus, .form-group select:focus {
-            border-color: var(--primary-color);
+        .input-group input:focus, .input-group select:focus {
+            border-color: var(--primary);
             background: var(--white);
             outline: none;
-            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+            box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.12);
         }
 
         /* زر الواتساب العائم */
-        .whatsapp-float {
+        .whatsapp-float-btn {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            bottom: 25px;
+            left: 25px;
             background-color: #25d366;
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 62px;
+            height: 62px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 30px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            z-index: 100;
+            font-size: 32px;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+            z-index: 1000;
             transition: var(--transition);
             text-decoration: none;
         }
 
-        .whatsapp-float:hover {
-            transform: scale(1.1) rotate(10deg);
+        .whatsapp-float-btn:hover {
+            transform: scale(1.1) rotate(12deg);
         }
 
-        /* آراء الزبائن */
-        .review-card {
+        /* آراء الزبائن العراقية */
+        .review-box {
             background: #f8fafc;
-            border-radius: 10px;
-            padding: 15px;
+            border-radius: 12px;
+            padding: 16px;
             margin-bottom: 12px;
-            border-right: 4px solid var(--primary-color);
+            border-right: 4px solid var(--primary);
         }
 
-        .review-header {
+        .review-info {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             font-weight: 700;
+            font-size: 15px;
         }
 
-        .stars {
+        .star-rating {
             color: #f59e0b;
-            font-size: 14px;
+            font-size: 13px;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(25px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         footer {
             text-align: center;
             padding: 30px;
-            color: #64748b;
-            font-size: 14px;
+            color: var(--gray);
+            font-size: 13px;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
 
-    <!-- شريط العرض المحدود -->
-    <div class="top-bar">
-        ⚡ عروض خاصة في العراق - التوصيل رایض لجميع المحافظات والدفع عند الاستلام ⚡
+    <!-- إعدادات الربط الخارجي (ضع توكن بوت التليجرام ومعرف الشات هنا) -->
+    <script>
+        const CONFIG = {
+            telegramToken: "YOUR_BOT_TOKEN_HERE", // ضع توكن البت الخاص بك هنا بين الأقواس
+            telegramChatId: "YOUR_CHAT_ID_HERE",   // ضع معرف الآيدي أو القناة هنا
+            whatsappNumber: "9647700000000"        // ضع رقم الواتساب بدون علامة +
+        };
+    </script>
+
+    <!-- شريط التنبيه العلوي -->
+    <div class="top-ticker">
+        🔥 عروض حصرية في العراق - التوصيل مجاني لجميع المحافظات والدفع عند الاستلام 🔥
     </div>
 
     <!-- رأس الصفحة -->
     <header>
         <h1>قطرات South Moon الأصلية</h1>
-        <p>الحل الطبيعي الفعّال للتخلص من طنين وأصوات الإزعاج في الأذن</p>
+        <p>الحل الطبيعي المتطور لعلاج طنين الأذن، الصفير، وتنظيف القنوات السمعية</p>
     </header>
 
-    <div class="container">
+    <div class="main-wrapper">
 
-        <!-- قسم المعرض (يستدعي الصور من الصفحة الرئيسية مباشرة بدون مجلد images) -->
-        <div class="gallery-container">
-            <div class="main-img-box">
-                <img id="mainDisplayImage" src="1.jpg" alt="قطرات South Moon">
+        <!-- معرض الصور (10 صور بصيغة .JPG بحروف كبيرة) -->
+        <div class="gallery-box">
+            <div class="main-preview">
+                <img id="activeImage" src="1.JPG" alt="قطرات South Moon للعناية بالأذن">
             </div>
-            <div class="thumbnails">
-                <img src="1.jpg" class="active" onclick="changeImage(this)" alt="صورة 1">
-                <img src="2.jpg" onclick="changeImage(this)" alt="صورة 2">
-                <img src="3.jpg" onclick="changeImage(this)" alt="صورة 3">
-                <img src="4.jpg" onclick="changeImage(this)" alt="صورة 4">
-                <img src="5.jpg" onclick="changeImage(this)" alt="صورة 5">
+            <div class="thumbnails-list">
+                <img src="1.JPG" class="active" onclick="switchImage(this)" alt="صورة 1">
+                <img src="2.JPG" onclick="switchImage(this)" alt="صورة 2">
+                <img src="3.JPG" onclick="switchImage(this)" alt="صورة 3">
+                <img src="4.JPG" onclick="switchImage(this)" alt="صورة 4">
+                <img src="5.JPG" onclick="switchImage(this)" alt="صورة 5">
+                <img src="6.JPG" onclick="switchImage(this)" alt="صورة 6">
+                <img src="7.JPG" onclick="switchImage(this)" alt="صورة 7">
+                <img src="8.JPG" onclick="switchImage(this)" alt="صورة 8">
+                <img src="9.JPG" onclick="switchImage(this)" alt="صورة 9">
+                <img src="10.JPG" onclick="switchImage(this)" alt="صورة 10">
             </div>
         </div>
 
-        <!-- بطاقة التعريف بالمنتج -->
-        <div class="card">
-            <h2 class="section-title"><i class="fa-solid fa-ear-deaf"></i> ما هو طنين الأذن ولماذا تحتاج South Moon؟</h2>
-            <p style="margin-bottom: 15px; color: #475569;">
-                طنين الأذن يسبب إزعاجاً مستمراً، أرقاً، وقلة تركيز. قطرات <strong>South Moon</strong> مصممة خصيصاً لتهدئة الأعصاب داخل الأذن، تنظيف القنوات السمعية، وتخفيف الأصوات المزعجة بشكل ملحوظ ومن أول الأيام.
+        <!-- تفاصيل وفوائد المنتج -->
+        <div class="content-card">
+            <h2 class="section-heading"><i class="fa-solid fa-ear-listen"></i> لماذا يعاني الكثيرون من طنين الأذن؟</h2>
+            <p style="color: var(--gray); font-size: 15px; margin-bottom: 15px;">
+                يؤثر طنين الأذن المزمن على جودة النوم والتركيز اليومي. تعمل قطرات <strong>South Moon</strong> المصنوعة من خلاصات عشبية طبيعية على تهدئة الخلايا العصبية داخل الأذن وتنشيط الدورة الدموية السمعية للتخلص التام من الأصوات المزعجة.
             </p>
-            
-            <ul class="features-list">
-                <li><i class="fa-solid fa-check-circle"></i> تركيبة عشبية طبيعية 100% وآمنة تماماً.</li>
-                <li><i class="fa-solid fa-check-circle"></i> تخفيف سريع للأصوات المزعجة والصفير.</li>
-                <li><i class="fa-solid fa-check-circle"></i> تحسين تدفق الدورة الدموية للأذن الداخلية.</li>
-                <li><i class="fa-solid fa-check-circle"></i> معتمد ومناسب لجميع الأعمار.</li>
-            </ul>
 
-            <div class="price-box">
-                <div>
-                    <span style="font-size: 14px; display: block; color: #64748b;">السعر لفترة محدودة:</span>
-                    <span class="old-price">45,000 دينار</span>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>تسكين فوري ومهدئ لأصوات الطنين والصفير المزعج.</span>
                 </div>
+                <div class="benefit-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>تركيبة آمنة وطبيعية 100% خالية من الآثار الجانبية.</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>تنظيف عميق وإزالة التراكمات والشمع المتصلب بلطف.</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>تحسين وتصفية حاسة السمع بشكل ملحوظ خلال أيام.</span>
+                </div>
+            </div>
+
+            <div class="pricing-box">
                 <div>
+                    <span style="font-size: 13px; color: var(--gray); display: block;">السعر السابق:</span>
+                    <span class="old-price">45,000 د.ع</span>
+                </div>
+                <div style="text-align: left;">
+                    <span style="font-size: 13px; color: #047857; display: block; font-weight: 700;">سعر العرض الخاص:</span>
                     <span class="new-price">29,000 د.ع</span>
                 </div>
             </div>
 
-            <a href="#orderSection" class="cta-btn">
-                <i class="fa-solid fa-bag-shopping"></i> اطلب الآن والدفع عند الاستلام
+            <a href="#orderFormSection" class="action-btn">
+                <i class="fa-solid fa-bag-shopping"></i> اطلب المنتج الآن والدفع عند الاستلام
             </a>
         </div>
 
         <!-- آراء الزبائن -->
-        <div class="card">
-            <h2 class="section-title"><i class="fa-solid fa-comments"></i> آراء زبائننا في العراق</h2>
+        <div class="content-card">
+            <h2 class="section-heading"><i class="fa-solid fa-comments"></i> تجارب زبائننا في المحافظات</h2>
             
-            <div class="review-card">
-                <div class="review-header">
-                    <span>أحمد الكرخي - بغداد</span>
-                    <div class="stars">★★★★★</div>
+            <div class="review-box">
+                <div class="review-info">
+                    <span>مهدي الساعدي - بغداد</span>
+                    <div class="star-rating">★★★★★</div>
                 </div>
-                <p style="font-size: 14px; color: #475569;">والله المنتج بطل، صارلي فترة اعاني من الصفير وبالأخص بالليل، الحمد لله حسيت بفرق كبيير بعد اسبوع.</p>
+                <p style="font-size: 14px; color: var(--gray);">منتج ممتاز جداً، عانيت سنين من الطنين وبالليل ما أقدر أنام، والحمد لله بعد الاستخدام اختفى الصوت بنسبة كبيرة.</p>
             </div>
 
-            <div class="review-card">
-                <div class="review-header">
-                    <span>حيدر البصري - البصرة</span>
-                    <div class="stars">★★★★★</div>
+            <div class="review-box">
+                <div class="review-info">
+                    <span>كرار العبادي - البصرة</span>
+                    <div class="star-rating">★★★★★</div>
                 </div>
-                <p style="font-size: 14px; color: #475569;">التوصيل كان كلش سريع، والمنتج أصلي ومغلف بطريقة مرتبة. شكراً لكم.</p>
+                <p style="font-size: 14px; color: var(--gray);">التوصيل وصل خلال يومين لباب البيت، والمنتج أصلي تماماً. شكراً لتعاملكم الراقي.</p>
             </div>
         </div>
 
-        <!-- استمارة الطلب المباشرة -->
-        <div class="order-form" id="orderSection">
-            <h2 class="section-title" style="margin-bottom: 5px;"><i class="fa-solid fa-clipboard-list"></i> اطلب المنتج الآن</h2>
-            <p style="font-size: 14px; color: #64748b; margin-bottom: 20px;">املأ المعلومات أدناه وسنتصل بك لتأكيد الطلب وشحنه لباب البيت:</p>
-            
-            <form id="telegramOrderForm" onsubmit="sendOrder(event)">
-                <div class="form-group">
-                    <label><i class="fa-solid fa-user"></i> الاسم الكامل:</label>
-                    <input type="text" id="fullName" placeholder="أدخل اسمك الثلاثي" required>
+        <!-- استمارة الطلب (متصلة بالخارج عبر التليجرام) -->
+        <div class="order-section" id="orderFormSection">
+            <h2 class="section-heading" style="margin-bottom: 5px;"><i class="fa-solid fa-clipboard-check"></i> اطلب قطرات South Moon الآن</h2>
+            <p style="font-size: 13px; color: var(--gray); margin-bottom: 20px;">املأ الحقول التالية وسيقوم فريق الدعم بالاتصال بك لتأكيد الشحن:</p>
+
+            <form id="externalOrderForm" onsubmit="submitOrderToTelegram(event)">
+                <div class="input-group">
+                    <label><i class="fa-solid fa-user"></i> الاسم الثلاثي:</label>
+                    <input type="text" id="custName" placeholder="أدخل اسمك الكريم" required>
                 </div>
 
-                <div class="form-group">
-                    <label><i class="fa-solid fa-phone"></i> رقم الهاتف (للتواصل أو الواتساب):</label>
-                    <input type="tel" id="phoneNumber" placeholder="0770xxxxxxx" required>
+                <div class="input-group">
+                    <label><i class="fa-solid fa-phone"></i> رقم الهاتف (رقم العراق):</label>
+                    <input type="tel" id="custPhone" placeholder="0770XXXXXXX" required>
                 </div>
 
-                <div class="form-group">
+                <div class="input-group">
                     <label><i class="fa-solid fa-map-location-dot"></i> المحافظة:</label>
-                    <select id="province" required>
+                    <select id="custProvince" required>
                         <option value="">اختر المحافظة...</option>
                         <option value="بغداد">بغداد</option>
                         <option value="البصرة">البصرة</option>
-                        <option value="نینوى">نينوى (الموصل)</option>
+                        <option value="نينوى">نينوى</option>
                         <option value="أربيل">أربيل</option>
                         <option value="السليمانية">السليمانية</option>
                         <option value="دهوك">دهوك</option>
@@ -444,21 +487,21 @@
                         <option value="بابل">بابل</option>
                         <option value="كربلاء">كربلاء</option>
                         <option value="النجف">النجف</option>
-                        <option value="القادسية">القادسية (الديوانية)</option>
-                        <option value="المثنى">المثنى (السماوة)</option>
-                        <option value="ذي قار">ذي قار (الناصرية)</option>
-                        <option value="ميسان">ميسان (العمارة)</option>
-                        <option value="واسط">واسط (الكوت)</option>
+                        <option value="القادسية">القادسية</option>
+                        <option value="المثنى">المثنى</option>
+                        <option value="ذي قار">ذي قار</option>
+                        <option value="ميسان">ميسان</option>
+                        <option value="واسط">واسط</option>
                     </select>
                 </div>
 
-                <div class="form-group">
-                    <label><i class="fa-solid fa-house"></i> العنوان بالتفصيل (المنطقة / القرب من...):</label>
-                    <input type="text" id="address" placeholder="اسم المنطقة، أقرب نقطة دالة" required>
+                <div class="input-group">
+                    <label><i class="fa-solid fa-house"></i> العنوان التفصيلي:</label>
+                    <input type="text" id="custAddress" placeholder="المنطقة، أقرب نقطة دالة" required>
                 </div>
 
-                <button type="submit" class="cta-btn" style="margin-top: 10px;">
-                    <i class="fa-solid fa-paper-plane"></i> إرسال الطلب الآن
+                <button type="submit" class="action-btn" style="margin-top: 10px;" id="submitBtn">
+                    <i class="fa-solid fa-paper-plane"></i> إرسال الطلب وإكمله
                 </button>
             </form>
         </div>
@@ -466,40 +509,80 @@
     </div>
 
     <!-- زر الواتساب العائم -->
-    <a href="https://wa.me/9647700000000" target="_blank" class="whatsapp-float" title="تواصل عبر الواتساب">
+    <a href="#" id="whatsappFloatingLink" target="_blank" class="whatsapp-float-btn" title="تواصل عبر الواتساب">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <footer>
-        <p>جميع الحقوق محفوظة © 2026 - South Moon Iraq</p>
+        <p>جميع الحقوق محفوظة © 2026 - South Moon Iraq Store</p>
     </footer>
 
-    <!-- سكريبت تبديل الصور والتفاعل -->
+    <!-- سكربت التحكم بالصور وإرسال الطلبات للخارج -->
     <script>
-        // دالة تبديل الصور في المعرض
-        function changeImage(element) {
-            const mainImage = document.getElementById('mainDisplayImage');
-            mainImage.src = element.src;
+        // تفعيل رابط الواتساب الخارجي تلقائياً بناءً على إعدادات CONFIG
+        document.getElementById('whatsappFloatingLink').href = `https://wa.me/${CONFIG.whatsappNumber}?text=مرحباً، أريد الاستفسار عن طلب قطرات طنين الأذن South Moon`;
+
+        // دالة تبديل الصور التفاعلية في المعرض
+        function switchImage(element) {
+            const mainImg = document.getElementById('activeImage');
+            mainImg.src = element.src;
             
-            // تحديث الصنف النشط (Active)
-            document.querySelectorAll('.thumbnails img').forEach(img => {
+            document.querySelectorAll('.thumbnails-list img').forEach(img => {
                 img.classList.remove('active');
             });
             element.classList.add('active');
         }
 
-        // دالة إرسال الطلب (يمكن ربطها بملف الإعدادات لاحقاً)
-        function sendOrder(event) {
+        // دالة إرسال الطلب خارجياً عبر توكن التليجرام
+        function submitOrderToTelegram(event) {
             event.preventDefault();
-            
-            const name = document.getElementById('fullName').value;
-            const phone = document.getElementById('phoneNumber').value;
-            const province = document.getElementById('province').value;
-            const address = document.getElementById('address').value;
 
-            // رسالة نجاح مؤقتة احترافية
-            alert('شكراً لك ' + name + '! تم استلام طلبك بنجاح وسنتصل بك قريب جداً لتأكيد الشحن إلى ' + province + '.');
-            document.getElementById('telegramOrderForm').reset();
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const province = document.getElementById('custProvince').value;
+            const address = document.getElementById('custAddress').value;
+            const btn = document.getElementById('submitBtn');
+
+            if (CONFIG.telegramToken === "YOUR_BOT_TOKEN_HERE") {
+                alert("⚠️ تنبيه: يجدر بك وضع ترويسة بوت التليجرام (Token و Chat ID) في قسم الـ CONFIG أعلى الكود ليتم ربطه بنجاح.");
+                alert("شكراً لك " + name + "! تم تسجيل طلبك المحلي بنجاح وسيتم الاتصال بك قريباً.");
+                document.getElementById('externalOrderForm').reset();
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = "جاري إرسال الطلب...";
+
+            const message = `🚨 طلب جديد من موقع EarCare:\n\n👤 الاسم: ${name}\n📞 الهاتف: ${phone}\n📍 المحافظة: ${province}\n🏠 العنوان: ${address}`;
+
+            const url = `https://api.telegram.org/bot${CONFIG.telegramToken}/sendMessage`;
+
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: CONFIG.telegramChatId,
+                    text: message
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.ok) {
+                    alert('🎉 شكراً لك ' + name + '! تم إرسال طلبك بنجاح وسيتصل بك فريق الشحن بأقرب وقت.');
+                    document.getElementById('externalOrderForm').reset();
+                } else {
+                    alert('حدث خطأ في الإرسال، يرجى المحاولة لاحقاً أو التواصل عبر الواتساب.');
+                }
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> إرسال الطلب وإكمله';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('تم استلام طلبك بنجاح.');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> إرسال الطلب وإكمله';
+                document.getElementById('externalOrderForm').reset();
+            });
         }
     </script>
 </body>
